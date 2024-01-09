@@ -2,11 +2,11 @@ import { Title } from 'components/App.styled';
 import { FilterField } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilterAction } from '../../redux/filterSlice';
-import { getFilter } from '../../redux/selectors';
+import { selectFilter } from '../../redux/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
 
   const handleFilter = e => {
     dispatch(updateFilterAction(e.target.value));

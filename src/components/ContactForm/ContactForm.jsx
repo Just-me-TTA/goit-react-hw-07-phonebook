@@ -10,17 +10,17 @@ import {
   Label,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactAction } from '../../redux/contactsSlice';
-import { getContacts } from '../../redux/selectors';
+import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/operations';
 
 const initialValues = {
   name: '',
-  number: '',
+  phone: '',
 };
 
 const validationSchema = yup.object().shape({
   name: yup.string().min(3).max(30).required('A name is required'),
-  number: yup
+  phone: yup
     .string()
     .phone(
       'UK',
@@ -31,9 +31,9 @@ const validationSchema = yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
-  const addContact = newContact => {
+  const addNewContact = newContact => {
     const isExist = contacts.find(
       contact =>
         contact.name.toLowerCase() === newContact.name.toLowerCase().trim()
@@ -44,11 +44,11 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContactAction(newContact));
+    dispatch(addContact(newContact));
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    addContact(values);
+    addNewContact(values);
     resetForm();
   };
 
@@ -66,7 +66,7 @@ export const ContactForm = () => {
           </Label>
           <Label htmlFor="number">
             Number
-            <Input type="tel" name="number" />
+            <Input type="tel" name="phone" />
           </Label>
           <Button type="submit" aria-label="add contact">
             Add contact
@@ -74,7 +74,7 @@ export const ContactForm = () => {
         </FieldsWrapper>
 
         <ErrorMessageStyled name="name" component="div" />
-        <ErrorMessageStyled name="number" component="div" />
+        <ErrorMessageStyled name="phone" component="div" />
       </FormStyled>
     </Formik>
   );

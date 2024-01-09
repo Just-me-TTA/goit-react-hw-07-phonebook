@@ -1,23 +1,39 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
-import { useSelector } from 'react-redux';
-import { getContacts, getFilter } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectContacts,
+  selectError,
+  selectFilteredContacts,
+} from '../../redux/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from '../../redux/operations';
+import { Error } from 'components/Error/Error';
+import { CounterMessage, List } from './ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
+  const error = useSelector(selectError);
 
-  const filterContactsByName = () => {
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase().trim())
-    );
-    return filteredContacts;
-  };
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
-    <ul>
-      {filterContactsByName().map(contact => (
-        <ContactItem contact={contact} key={contact.id} />
-      ))}
-    </ul>
+    <>
+      {error && <Error />}
+      <List>
+        {filteredContacts.map(contact => (
+          <ContactItem contact={contact} key={contact.id} />
+        ))}
+      </List>
+      {!error && (
+        <CounterMessage>
+          You have {contacts.length} contacts. You filtered{' '}
+          {filteredContacts.length} contacts.
+        </CounterMessage>
+      )}
+    </>
   );
 };
