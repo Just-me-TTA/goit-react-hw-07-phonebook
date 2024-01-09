@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-06-phonebook/static/css/main.f7d07fa3.css",
-    "main.js": "/goit-react-hw-06-phonebook/static/js/main.54957392.js",
-    "static/media/Rajdhani-Regular.ttf": "/goit-react-hw-06-phonebook/static/media/Rajdhani-Regular.148606c1eb703f6e597a.ttf",
-    "static/media/Megrim-Regular.ttf": "/goit-react-hw-06-phonebook/static/media/Megrim-Regular.555fbbb1d627f28ffa41.ttf",
-    "index.html": "/goit-react-hw-06-phonebook/index.html",
-    "main.f7d07fa3.css.map": "/goit-react-hw-06-phonebook/static/css/main.f7d07fa3.css.map",
-    "main.54957392.js.map": "/goit-react-hw-06-phonebook/static/js/main.54957392.js.map"
+    "main.css": "/goit-react-hw-07-phonebook/static/css/main.3808f235.css",
+    "main.js": "/goit-react-hw-07-phonebook/static/js/main.57db32d5.js",
+    "static/media/Rajdhani-Regular.ttf": "/goit-react-hw-07-phonebook/static/media/Rajdhani-Regular.148606c1eb703f6e597a.ttf",
+    "static/media/Megrim-Regular.ttf": "/goit-react-hw-07-phonebook/static/media/Megrim-Regular.555fbbb1d627f28ffa41.ttf",
+    "index.html": "/goit-react-hw-07-phonebook/index.html",
+    "main.3808f235.css.map": "/goit-react-hw-07-phonebook/static/css/main.3808f235.css.map",
+    "main.57db32d5.js.map": "/goit-react-hw-07-phonebook/static/js/main.57db32d5.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7d07fa3.css",
-    "static/js/main.54957392.js"
+    "static/css/main.3808f235.css",
+    "static/js/main.57db32d5.js"
   ]
 }
